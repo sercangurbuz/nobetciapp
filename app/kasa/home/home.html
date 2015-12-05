@@ -1,0 +1,79 @@
+<ion-side-menus enable-menu-with-back-views="false">
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar ynl-bar">
+            <ion-nav-back-button class="button-clear">
+                <i class="ion-ios-arrow-back"></i> {{::"rota.geri" | i18n}}
+            </ion-nav-back-button>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="home-liste"></ion-nav-view>
+    </ion-side-menu-content>
+
+    <ion-side-menu side="left">
+        <header class="bar bar-header bar-assertive">
+            <h1 class="title" i18n="rota.ayarlar"></h1>
+        </header>
+        <ion-content class="has-header no-background">
+            <div class="list">
+                <a class="item item-icon-left" ng-click="dilDegistir($event)">
+                    <i class="icon ion-earth positive"></i>
+                    {{::'rota.dildegistir' | i18n}}
+                </a>
+                <a menu-close class="item item-icon-left" ng-click="showContactModal()">
+                    <i class="icon ion-email balanced"></i>
+                    {{::'rota.iletisim' | i18n}}
+                </a>
+                <a menu-close class="item item-icon-left" ng-click="hakkimizda()">
+                    <i class="icon ion-information-circled energized"></i>
+                    {{::'ynl.hakkimizda' | i18n}}
+                </a>
+                <a class="item item-icon-left" ng-click="logoff()">
+                    <i class="icon ion-log-out assertive"></i>
+                    {{::'rota.cikis' | i18n}}
+                    <span>|</span>
+                    <span class="username">{{currentUser.name}}</span>
+                </a>
+            </div>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>
+<!-->Contact Form List</!-->
+<script id="templates/contact.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-positive">
+            <h1 class="title">{{'ynl.iletisim' | i18n}}</h1>
+            <div class="button button-clear" ng-click="closeModal()"><span class="icon ion-close"></span></div>
+        </ion-header-bar>
+        <ion-content class="no-background">
+            <div class="list list-inset">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label label-color" i18n="ynl.adi"></span>
+                    <input type="text" ng-model="mail.fullname">
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label label-color" i18n="ynl.email"></span>
+                    <input type="text" ng-model="mail.email">
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label label-color" i18n="ynl.mesaj"></span>
+                    <textarea rows="5" cols="20" ng-model="mail.message"></textarea>
+                </label>
+            </div>
+            <div class="padding">
+                <button class="button button-block button-balanced" i18n="ynl.gonder" ng-click="modalResult()"></button>
+            </div>
+            <div class="text-center">
+                <div i18n="ynl.hakkinda"></div>
+                <div i18n="ynl.hakkinda2"></div>
+            </div>
+        </ion-content>
+    </ion-modal-view>
+</script>
+
+<script id="templates/hakkimizda.html" type="text/ng-template">
+    <div>{{'ynl.uygulama' | i18n}} ver {{version}}</div>
+    <div>{{'rota.bimar' | i18n}}</div>
+    <div>{{'ynl.hakkinda2' | i18n}}</div>
+</script>

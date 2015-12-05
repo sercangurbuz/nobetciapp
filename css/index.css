@@ -1,0 +1,115 @@
+@import url('rota.css');
+
+.hizmet {
+    color: #1F7BA9;
+    font-weight: bold !important;
+}
+
+.value {
+    color: #525252;
+    font-weight: bold;
+}
+
+.tutar {
+    display: inline;
+}
+
+.tarih {
+    font-size: 0.9em;
+    color: #ccc6c6;
+    margin-left: 5px;
+}
+
+.aciklama {
+    font-family: "SourceSansProIt";
+    color: #8F8F8F;
+}
+
+.onaytipi {
+    border-left: 8px solid;
+    border-left-color: #ffcc00;
+}
+
+.onaytipi7 {
+    border-left-color: #ffcc00;
+}
+
+.onaytipi8 {
+    border-left-color: #ff9900;
+}
+
+.onaytipi9 {
+    border-left-color: #ff6600;
+}
+
+.onaytipi10 {
+    border-left-color: #ff3300;
+}
+
+.onaytipi11 {
+    border-left-color: #ff0000;
+}
+
+.ynl-bar {
+    color: #fff !important;
+    background: rgb(164,200,85);
+}
+
+    .ynl-bar .button {
+        color: #fff !important;
+    }
+
+.slider {
+    height: 100%;
+}
+
+.slider-slide {
+    color: #000;
+    text-align: center;
+    font-weight: 300;
+}
+
+#logo {
+    margin: 40px 0px;
+}
+
+#list {
+    width: 170px;
+    margin: 30px auto;
+    font-size: 20px;
+}
+
+    #list ol {
+        margin-top: 30px;
+    }
+
+        #list ol li {
+            text-align: left;
+            list-style: decimal;
+            margin: 10px 0px;
+        }
+
+.button.ng-hide {
+    display: none;
+}
+
+.slide2 {
+    padding-top: 40px;
+}
+
+.slide1 {
+    position: relative;
+    padding-top: 80px;
+}
+
+    .slide1 h3 {
+        color: #6E96D1;
+        font-weight: bold;
+        font-family: 'SourceSansProIt';
+    }
+
+    .slide1 .bottom-text {
+        position: absolute;
+        bottom: 45px;
+        color: #C7BCBC;
+    }

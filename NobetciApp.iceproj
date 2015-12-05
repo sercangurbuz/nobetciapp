@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>9a829618-a8a5-453f-b9e6-05f672100603</ProjectGuid>
+    <ProjectTypeGuids>{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include=".abignore" />
+    <Content Include=".abproject" />
+    <Content Include=".debug.abproject" />
+    <Content Include=".release.abproject" />
+    <Content Include="app\infrastructure\base\BaseApi.js" />
+    <Content Include="app\infrastructure\base\BaseConfig.js" />
+    <Content Include="app\infrastructure\base\BaseController.js" />
+    <Content Include="app\infrastructure\base\BaseCrudController.js" />
+    <Content Include="app\infrastructure\base\BaseService.js" />
+    <Content Include="app\infrastructure\base\Index.js" />
+    <Content Include="app\infrastructure\config\App.js" />
+    <Content Include="app\infrastructure\config\Config.js" />
+    <Content Include="app\infrastructure\config\Infrastructure.Index.js" />
+    <Content Include="app\infrastructure\config\main.js" />
+    <Content Include="app\infrastructure\config\Vendor.Index.js" />
+    <Content Include="app\infrastructure\core\Index.js" />
+    <Content Include="app\infrastructure\core\ionic\js\angular-ui\angular-ui-router.min.js" />
+    <Content Include="app\infrastructure\core\ionic\js\angular\angular-animate.min.js" />
+    <Content Include="app\infrastructure\core\ionic\js\angular\angular-sanitize.min.js" />
+    <Content Include="app\infrastructure\core\ionic\js\angular\angular.min.js" />
+    <Content Include="app\infrastructure\core\ionic\js\ionic-angular.min.js" />
+    <Content Include="app\infrastructure\core\ionic\js\ionic.min.js" />
+    <Content Include="app\infrastructure\core\require.js" />
+    <Content Include="app\infrastructure\directives\Index.js" />
+    <Content Include="app\infrastructure\directives\IonDatepicker.js" />
+    <Content Include="app\infrastructure\directives\IonSearch.js" />
+    <Content Include="app\infrastructure\directives\LocalizationFilter.js" />
+    <Content Include="app\infrastructure\filters\Index.js" />
+    <Content Include="app\infrastructure\filters\Money.js" />
+    <Content Include="app\infrastructure\lib\Class.js" />
+    <Content Include="app\infrastructure\lib\i18n.js" />
+    <Content Include="app\infrastructure\lib\Index.js" />
+    <Content Include="app\infrastructure\lib\moment.min.js" />
+    <Content Include="app\infrastructure\lib\underscore.min.js" />
+    <Content Include="app\infrastructure\services\Caching.js" />
+    <Content Include="app\infrastructure\services\Common.js" />
+    <Content Include="app\infrastructure\services\CommonUI.js" />
+    <Content Include="app\infrastructure\services\Dialogs.js" />
+    <Content Include="app\infrastructure\services\Email.js" />
+    <Content Include="app\infrastructure\services\Events.js" />
+    <Content Include="app\infrastructure\services\ExceptionHandler.js" />
+    <Content Include="app\infrastructure\services\Index.js" />
+    <Content Include="app\infrastructure\services\Interceptors.js" />
+    <Content Include="app\infrastructure\services\Localization.js" />
+    <Content Include="app\infrastructure\services\Logger.js" />
+    <Content Include="app\infrastructure\services\Modal.js" />
+    <Content Include="app\infrastructure\services\Plugins.js" />
+    <Content Include="app\infrastructure\services\Routing.js" />
+    <Content Include="app\infrastructure\services\Security.js" />
+    <Content Include="app\infrastructure\ui\views\login.html" />
+    <Content Include="app\kasa\home\home.html" />
+    <Content Include="app\kasa\home\home.js" />
+    <Content Include="app\kasa\home\intro.html" />
+    <Content Include="app\kasa\home\intro.js" />
+    <Content Include="app\resources\nls\en-us\resources.js" />
+    <Content Include="app\resources\nls\resources.js" />
+    <Content Include="app\resources\nls\tr-tr\resources.js" />
+    <Content Include="app\startup.js" />
+    <Content Include="build\build.config.css.js" />
+    <Content Include="build\build.config.js" />
+    <Content Include="build\r.js" />
+    <Content Include="build\run.js" />
+    <Content Include="cordova.android.js" />
+    <Content Include="cordova.ios.js" />
+    <Content Include="cordova.wp8.js" />
+    <Resource Include="App_Resources\Android\drawable-hdpi\icon.png" />
+    <Resource Include="App_Resources\Android\drawable-ldpi\icon.png" />
+    <Resource Include="App_Resources\Android\drawable-mdpi\icon.png" />
+    <Resource Include="App_Resources\Android\drawable-nodpi\splashscreen.9.png" />
+    <Resource Include="App_Resources\iOS\Default-568h@2x.png" />
+    <Resource Include="App_Resources\iOS\Default-667h.png" />
+    <Resource Include="App_Resources\iOS\Default-736h.png" />
+    <Resource Include="App_Resources\iOS\Default-Landscape-667h.png" />
+    <Resource Include="App_Resources\iOS\Default-Landscape-736h.png" />
+    <Resource Include="App_Resources\iOS\Default-Landscape.png" />
+    <Resource Include="App_Resources\iOS\Default-Landscape@2x.png" />
+    <Resource Include="App_Resources\iOS\Default-Portrait.png" />
+    <Resource Include="App_Resources\iOS\Default-Portrait@2x.png" />
+    <Resource Include="App_Resources\iOS\Default.png" />
+    <Resource Include="App_Resources\iOS\Default@2x.png" />
+    <Resource Include="App_Resources\iOS\icon-40.png" />
+    <Resource Include="App_Resources\iOS\icon-40@2x.png" />
+    <Resource Include="App_Resources\iOS\Icon-40@3x.png" />
+    <Resource Include="App_Resources\iOS\icon-60.png" />
+    <Resource Include="App_Resources\iOS\icon-60@2x.png" />
+    <Resource Include="App_Resources\iOS\Icon-60@3x.png" />
+    <Resource Include="App_Resources\iOS\icon-72.png" />
+    <Resource Include="App_Resources\iOS\icon-72@2x.png" />
+    <Resource Include="App_Resources\iOS\icon-76.png" />
+    <Resource Include="App_Resources\iOS\icon-76@2x.png" />
+    <Resource Include="App_Resources\iOS\Icon-Small-50.png" />
+    <Resource Include="App_Resources\iOS\Icon-Small-50@2x.png" />
+    <Resource Include="App_Resources\iOS\Icon-Small.png" />
+    <Resource Include="App_Resources\iOS\Icon-Small@2x.png" />
+    <Resource Include="App_Resources\iOS\icon.png" />
+    <Resource Include="App_Resources\iOS\icon@2x.png" />
+    <Resource Include="App_Resources\iOS\watch-172x172.png" />
+    <Resource Include="App_Resources\iOS\watch-196x196.png" />
+    <Resource Include="App_Resources\iOS\watch-48x48.png" />
+    <Resource Include="App_Resources\iOS\watch-55x55.png" />
+    <Resource Include="App_Resources\iOS\watch-58x58.png" />
+    <Resource Include="App_Resources\iOS\watch-80x80.png" />
+    <Resource Include="App_Resources\iOS\watch-87x87.png" />
+    <Resource Include="App_Resources\iOS\watch-88x88.png" />
+    <Resource Include="App_Resources\WP8\ApplicationIcon.png" />
+    <Resource Include="App_Resources\WP8\SplashScreenImage.jpg" />
+    <Resource Include="App_Resources\WP8\Assets\BadgeLogo.png" />
+    <Resource Include="App_Resources\WP8\Assets\Logo.png" />
+    <Resource Include="App_Resources\WP8\Assets\SplashScreen.png" />
+    <Resource Include="App_Resources\WP8\Assets\SquareTile150x150.png" />
+    <Resource Include="App_Resources\WP8\Assets\SquareTile71x71.png" />
+    <Resource Include="App_Resources\WP8\Assets\StoreLogo.png" />
+    <Resource Include="App_Resources\WP8\Assets\WideLogo.png" />
+    <Resource Include="App_Resources\WP8\Tiles\Iconic\110x110.png" />
+    <Resource Include="App_Resources\WP8\Tiles\Iconic\202x202.png" />
+    <Content Include="css\index.css" />
+    <Content Include="css\index.min.css" />
+    <Content Include="css\ionic.min.css" />
+    <Content Include="css\ionicons.min.css" />
+    <Content Include="css\rota.css" />
+    <Content Include="css\rota.min.css" />
+    <Content Include="fonts\ionicons.eot" />
+    <Content Include="fonts\ionicons.svg" />
+    <Content Include="fonts\ionicons.ttf" />
+    <Content Include="fonts\ionicons.woff" />
+    <Content Include="fonts\SourceSansPro-It\SourceSansProIt.eot" />
+    <Content Include="fonts\SourceSansPro-It\SourceSansProIt.svg" />
+    <Content Include="fonts\SourceSansPro-It\SourceSansProIt.ttf" />
+    <Content Include="fonts\SourceSansPro-It\SourceSansProIt.woff" />
+    <Content Include="fonts\SourceSansPro-It\SourceSansProIt.woff2" />
+    <Content Include="fonts\SourceSansPro-Regular\sourcesanspro-regular.eot" />
+    <Content Include="fonts\SourceSansPro-Regular\sourcesanspro-regular.svg" />
+    <Content Include="fonts\SourceSansPro-Regular\sourcesanspro-regular.ttf" />
+    <Content Include="fonts\SourceSansPro-Regular\sourcesanspro-regular.woff" />
+    <Content Include="fonts\SourceSansPro-Regular\sourcesanspro-regular.woff2" />
+    <Content Include="fonts\ubuntu\ubuntu-c.eot" />
+    <Content Include="fonts\ubuntu\ubuntu-c.svg" />
+    <Content Include="fonts\ubuntu\ubuntu-c.ttf" />
+    <Content Include="fonts\ubuntu\ubuntu-c.woff" />
+    <Content Include="fonts\ubuntu\ubuntu-c.woff2" />
+    <Content Include="img\arkas-bg.png" />
+    <Content Include="img\arkas-logo.png" />
+    <Content Include="img\tutorial.jpg" />
+    <Content Include="img\ynl-arkas-bg.png" />
+    <Content Include="index.debug.html" />
+    <Content Include="index.release.html" />
+    <Content Include="js\index.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="app\" />
+    <Folder Include="app\infrastructure\" />
+    <Folder Include="app\infrastructure\base\" />
+    <Folder Include="app\infrastructure\config\" />
+    <Folder Include="app\infrastructure\core\" />
+    <Folder Include="app\infrastructure\core\ionic\" />
+    <Folder Include="app\infrastructure\core\ionic\js\" />
+    <Folder Include="app\infrastructure\core\ionic\js\angular-ui\" />
+    <Folder Include="app\infrastructure\core\ionic\js\angular\" />
+    <Folder Include="app\infrastructure\directives\" />
+    <Folder Include="app\infrastructure\filters\" />
+    <Folder Include="app\infrastructure\lib\" />
+    <Folder Include="app\infrastructure\services\" />
+    <Folder Include="app\infrastructure\ui\" />
+    <Folder Include="app\infrastructure\ui\views\" />
+    <Folder Include="app\kasa\" />
+    <Folder Include="app\kasa\home\" />
+    <Folder Include="app\kasa\services\" />
+    <Folder Include="app\resources\" />
+    <Folder Include="app\resources\nls\" />
+    <Folder Include="app\resources\nls\en-us\" />
+    <Folder Include="app\resources\nls\tr-tr\" />
+    <Folder Include="App_Resources\" />
+    <Folder Include="App_Resources\Android\" />
+    <Folder Include="App_Resources\Android\drawable-hdpi\" />
+    <Folder Include="App_Resources\Android\drawable-ldpi\" />
+    <Folder Include="App_Resources\Android\drawable-mdpi\" />
+    <Folder Include="App_Resources\Android\drawable-nodpi\" />
+    <Folder Include="App_Resources\iOS\" />
+    <Folder Include="App_Resources\WP8\" />
+    <Folder Include="App_Resources\WP8\Assets\" />
+    <Folder Include="App_Resources\WP8\Tiles\" />
+    <Folder Include="App_Resources\WP8\Tiles\Iconic\" />
+    <Folder Include="build\" />
+    <Folder Include="css\" />
+    <Folder Include="fonts\" />
+    <Folder Include="fonts\SourceSansPro-It\" />
+    <Folder Include="fonts\SourceSansPro-Regular\" />
+    <Folder Include="fonts\ubuntu\" />
+    <Folder Include="img\" />
+    <Folder Include="js\" />
+    <Folder Include="Plugins\" />
+  </ItemGroup>
+  <Import Project="$(IceniumTargets)Build.targets" />
+  <!--
+    TODO: Uncomment this code if you need to customize the build process.
+    <Target Name="BeforeBuild">
+        <Message Text="TODO: Implement BeforeBuild" Importance="high" />
+    </Target>
+
+    <Target Name="AfterBuild">
+        <Message Text="TODO: Implement AfterBuild" Importance="high" />
+    </Target>
+    -->
+</Project>
