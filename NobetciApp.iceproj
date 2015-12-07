@@ -71,8 +71,12 @@
     <Content Include="app\infrastructure\services\Routing.js" />
     <Content Include="app\infrastructure\services\Security.js" />
     <Content Include="app\infrastructure\ui\views\login.html" />
-    <Content Include="app\nobetci\home\home.html" />
-    <Content Include="app\nobetci\home\home.js" />
+    <Content Include="app\nobetci\home\home.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="app\nobetci\home\home.js">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="app\nobetci\nobetciler\detay.html" />
     <Content Include="app\nobetci\nobetciler\detay.js" />
     <Content Include="app\nobetci\nobetciler\liste.html" />
