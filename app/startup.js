@@ -11,11 +11,6 @@ define(['config/App'], function (app) {
         //ConfigProvider.defaultApiUrl = 'https://ynlapi.arkas.com';
         ConfigProvider.debugMode = true;
         ConfigProvider.elmahLoggingEnabled = false;
-        //OAuth Settings
-        SecurityConfigProvider.oauthOptions.loginBaseUri = 'http://oauthtest.bimar.com/auth-ynl';
-        //SecurityConfigProvider.oauthOptions.loginBaseUri = 'http://localhost:44014/auth-ynl';
-        SecurityConfigProvider.oauthOptions.scope = 'mobile';
-        SecurityConfigProvider.oauthOptions.accountStore = 'ynl';
     }).run([
         'Routing', function (routing) {
             var appViews = [
