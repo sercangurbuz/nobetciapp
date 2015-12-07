@@ -1,0 +1,53 @@
+<ion-view view-title="{{'nb.hemsirelistesi' | i18n}}">
+    >
+    <!--Birden fazla button Android 4.4 te alt alta cikiyordu,Buttonlarin yan yana yazilmasi gerekiyor-->
+    <ion-nav-buttons side="secondary">
+        <button class="button button-icon ion-ios-refresh-empty" ng-click="yenile()"></button><button class="button button-icon icon ion-ios-more" ng-click="islemListesi($event)"></button>
+    </ion-nav-buttons>
+    <!--Content-->
+    <ion-content>
+        <ion-refresher pulling-text="{{'rota.yenile' | i18n}}"
+                       on-refresh="refreshList()"
+                       pulling-icon="ion-ios-refresh-empty">
+        </ion-refresher>
+        <div class="list">
+            <div class="item item-divider">
+                {{::"ynl.listebaslik" | i18n}}
+                <span style="right:11px;" class="badge badge-assertive">{{model.length}}</span>
+            </div>
+            <div class="item item-divider item-dark text-center" ng-show="networkStatus.offline">
+                {{::"rota.offline" | i18n}}
+            </div>
+            <a ng-class="['item','onaytipi','onaytipi' + {{::hareket.onayTipi}}]"
+               ui-sref="home.kasaHareketDetay({id:hareket.id})"
+               ng-repeat="hareket in model"
+               on-hold="holdActions(hareket)">
+                <div style="float:right">
+                    <button ng-click="onayla(hareket.onayId,hareket.id,$event)" style="margin-bottom:5px;"
+                            class="button button-small button-outline button-positive icon ion-ios-checkmark-outline">
+                        {{::"ynl.onayla" | i18n}}
+                    </button><br />
+                    <button ng-click="reddet(hareket.onayId,hareket.id,$event);"
+                            class="button button-small button-outline button-assertive icon ion-ios-close-outline">
+                        {{::"ynl.reddet" | i18n}}
+                    </button>
+                </div>
+                <h3 class="hizmet">
+                    {{::hareket.hizmetAdi}}
+                </h3>
+                <h2 class="tutar">
+                    {{::hareket.tutar | money:hareket.pb}}
+                </h2>
+                <span class="tarih">
+                    <i class="icon ion-ios-clock-outline"></i>
+                    {{::hareket.tarih | date:'dd/MM/yyyy'}}
+                </span>
+                <p class="aciklama">
+                    <i class="icon ion-compose" ng-show="hareket.aciklama"></i>
+                    {{::hareket.aciklama}}
+                </p>
+            </a>
+        </div>
+    </ion-content>
+</ion-view>
+

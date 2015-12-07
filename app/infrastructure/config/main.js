@@ -47,7 +47,7 @@ require(
     //Dil deðiþtiginde localStorage'a yeni dili atiyoruz ve sayfayi postback'e gonderiyoruz
     //Uygulama bir sonraki acilþta en son acilan dilde aciliyor
     {
-        locale: localStorage.getItem('activeLanguage') || getDeviceLang()
+        locale: 'tr-tr'
     },
     [
         //Core Modules

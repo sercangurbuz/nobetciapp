@@ -6,45 +6,38 @@ define(['config/App'], function (app) {
         //Genel Ayarlar
         ConfigProvider.appVersion = "1.0.0";
         ConfigProvider.projectTitle = 'YNL Kasa';
-        ConfigProvider.defaultApiUrl = 'http://ynlapitest.bimar.com';
-        //ConfigProvider.defaultApiUrl = 'http://localhost:18745';
-        //ConfigProvider.defaultApiUrl = 'https://ynlapi.arkas.com';
         ConfigProvider.debugMode = true;
         ConfigProvider.elmahLoggingEnabled = false;
+        ConfigProvider.appCheckEnabled = false;
+        //Security
+        SecurityConfigProvider.allowAnonymousAccess = true;
     }).run([
         'Routing', function (routing) {
             var appViews = [
-                 {
-                     state: 'intro',
-                     url: '/intro',
-                     templateUrl: 'kasa/home/intro',
-                     controller: 'IntroController',
-                     intro: true
-                 },
                 {
                     state: 'home',
                     url: '/home',
-                    templateUrl: 'kasa/home/home',
+                    templateUrl: 'nobetci/home/home',
                     controller: 'HomeController'
                 },
                 {
-                    state: 'home.kasaHareketListe',
-                    url: '/kasaHareketListe',
-                    templateUrl: 'kasa/hareket/liste',
-                    controller: 'KasaHareketListeController',
-                    view: 'home-liste',
+                    state: 'home.nobetciler',
+                    url: '/nobetciler',
+                    templateUrl: 'nobetci/nobetciler/liste',
+                    controller: 'nobetcilerController',
+                    view: 'home-liste'
                 },
                 {
-                    state: 'home.kasaHareketDetay',
-                    url: '/kasaHareketDetay/:id',
-                    templateUrl: 'kasa/hareket/detay',
-                    controller: 'KasaDetayController',
+                    state: 'home.nobetci',
+                    url: '/nobetci/:id',
+                    templateUrl: 'nobetci/nobetciler/detay',
+                    controller: 'nobetciController',
                     view: 'home-liste'
                 }
             ];
             //Map all states
             routing.map(appViews)
-                   .start('home.kasaHareketListe');
+                   .start('home.nobetciler');
         }
     ]);
 });

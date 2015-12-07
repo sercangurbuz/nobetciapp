@@ -54,64 +54,15 @@
         kullanmayabasla: 'Kullanmaya başla',
         intro: 'Intro',
         uygdurduruldu: 'Uygulama geçici süreliğine kullanım dışıdır.Konu hakkında en kısa sürede bilgilendiriliceksiniz.',
-        verhatali:'Yeni versiyon bulundu (ver : {0}).Lütfen her zaman güncel versiyonu kullanınız'
+        verhatali: 'Yeni versiyon bulundu (ver : {0}).Lütfen her zaman güncel versiyonu kullanınız'
 
     },
     //#endregion
 
     //#region Ynl resources
-    ynl: {
-        uygulama: 'YNL Kasa Mobil',
-        kasahareketliste: 'Kasa Hareketleri',
-        reddet: 'Reddet',
-        reddetonay: 'Reddetmek istediğinize emin misiniz?',
-        onayla: 'Onayla',
-        filtre: 'Filtre',
-        temizle: 'Temizle',
-        filtrele: 'Filtrele',
-        bastarihi: 'Baş. Tarihi',
-        bittarihi: 'Bit. Tarihi',
-        onaydurumu: 'Onay Durumu',
-        bekliyor: 'Bekliyor',
-        onaylandi: 'Onaylandı',
-        reddedildi: 'Reddedildi',
-        hizmet: 'Hizmet',
-        hareketbilgileri: 'Hareket Bilgileri',
-        tarih: 'Tarih',
-        tutar: 'Tutar',
-        aciklama: 'Açıklama',
-        hareketdetay: 'Hareket Detayları',
-        onaylistesi: 'Onay Listesi',
-        kullanici: 'Kullanıcı',
-        durum: 'Durum',
-        onaybasarilimesaji: 'Hareket onaylandi !',
-        reddetbasarilimesaji: 'Hareket reddedildi !',
-        tumunuonayla: 'Tümünü Onayla',
-        tumunureddet: 'Tümünü Reddet',
-        tumonaybasarilimesaji: 'Tüm hareketler onaylandı !',
-        tumreddetbasarilimesaji: 'Tüm hareketler reddedildi !',
-        listebaslik: 'Onayınızı bekleyen kayıtlar',
-        tumuonayonaymesaji: 'Tüm hareketler onaylanacak ?',
-        tumureddetonaymesaji: 'Tüm hareketler reddedilecek ?',
-        toplamlar: 'Toplamlar',
-        devir: 'Devir',
-        toplamgelir: 'Toplam Gelir',
-        toplamcikis: 'Toplam Çıkış',
-        bakiye: 'Bakiye',
-        bakiyeuah: 'Bakiye (UAH)',
-        bakiyeusd: 'Bakiye (USD)',
-        hareketbulunamadi: 'Hareket bulunamadı.Önceden onaylanmış bir kayda ulaşmaya çalışıyorsunuz',
-        adi: 'Ad Soyad',
-        email: 'E-posta',
-        konu: 'Konu',
-        iletisim: 'İletisim Formu',
-        mesaj: 'Mesaj',
-        gonder: 'Gönder',
-        hakkinda: 'YNL Kasa Mobil Uygulaması Bimar Bilgi İşlem Hizmetleri tarafından geliştirilmiştir.',
-        hakkinda2: ' Tel : +90 232 765 90 66 Fax : +90 232 765 90 77  Email:_ArkasLojistikYazilimMailGrubu@arkas.com',
-        emailbasarilimesaji: 'Mesajınız başarıyla gönderilmiştir',
-        hakkimizda: 'Hakkımızda',
-        intro: 'YNL Kasa Mobile uygulamasına hoşgeldiniz',
+    nb: {
+        nobetciler: 'Nöbetçiler',
+        hemsirelistesi: 'Hemşire Listesi'
     }
     //#endregion
 });
