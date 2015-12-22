@@ -9,10 +9,20 @@ define(['config/App'], function (app) {
         ConfigProvider.debugMode = true;
         ConfigProvider.elmahLoggingEnabled = false;
         ConfigProvider.appCheckEnabled = false;
+
+        ConfigProvider.dbName = "sifa.nobetcidb";
+
         //Security
         SecurityConfigProvider.allowAnonymousAccess = true;
     }).run([
-        'Routing', function (routing) {
+        '$injector', 'Routing', 'Plugins', 'Config', function ($injector, routing, plugins) {
+            //Create Db
+            var result = plugins.openDb("sifanobetci.db", [
+                { query: 'CREATE TABLE IF NOT EXISTS tbl_nobetciler (id integer primary key autoincrement, adsoyad varchar(250),icon text)' }
+               // { query: 'ALTER TABLE tbl_nobetciler ADD COLUMN icon text;' }
+            ]);
+
+            //Register routes
             var appViews = [
                 {
                     state: 'home',
@@ -29,7 +39,7 @@ define(['config/App'], function (app) {
                 },
                 {
                     state: 'home.nobetci',
-                    url: '/nobetci/:id',
+                    url: '/nobetciler/:id',
                     templateUrl: 'nobetci/nobetciler/detay',
                     controller: 'nobetciController',
                     view: 'home-liste'

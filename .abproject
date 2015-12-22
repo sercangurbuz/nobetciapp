@@ -41,5 +41,9 @@
     "ID_RESOLUTION_WVGA",
     "ID_RESOLUTION_WXGA",
     "ID_RESOLUTION_HD720P"
+  ],
+  "CorePlugins": [
+    "com.phonegap.plugins.sqlite@1.0.6",
+    "nl.x-services.plugins.actionsheet@1.1.7"
   ]
 }

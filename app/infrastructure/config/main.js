@@ -13,6 +13,7 @@ require.config({
         'Class': './infrastructure/lib/Class',
         'moment': './infrastructure/lib/moment.min',
         'i18n': './infrastructure/lib/i18n',
+        'jrcrop': './infrastructure/lib/jr-crop',
         //AMD PATHS
         'base': './infrastructure/base',
         'config': './infrastructure/config',
@@ -31,7 +32,9 @@ require.config({
         'ionic': { exports: 'ionic' },
         'angularIonic': { exports: 'angularIonic', deps: ['angular', 'ionic', 'uiRouter', 'angularAnimate', 'angularSanitize'] },
         'underscore': { exports: '_' },
-        'Class': { exports: 'Class' }
+        'Class': { exports: 'Class' },
+        'jrcrop': { deps: ['angular', 'ionic'] }
+
     },
     priority: [
         "angular"

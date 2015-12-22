@@ -177,14 +177,165 @@ define(['angular', 'base/BaseService', 'underscore'], function (angular, BaseSer
         },
         //#endregion
 
+        //#region SqlLite
+        //Open db
+        openDb: function (dbName, initQueries) {
+            var db = this.window.sqlitePlugin.openDatabase({ name: dbName, location: 2 });
+            if (initQueries) {
+                var p = this.execSqls(db, initQueries);
+                return {
+                    db: db,
+                    promise: p
+                };
+            }
+            return db;
+        },
+        //Delete DB
+        deleteDB: function (dbName) {
+            var q = this.q.defer();
+
+            this.window.sqlitePlugin.deleteDatabase(dbName, function (success) {
+                q.resolve(success);
+            }, function (error) {
+                q.reject(error);
+            });
+            return q.promise;
+        },
+        //Execute SQL statement
+        execSql: function (db, query, binding) {
+            var q = this.q.defer();
+            db.transaction(function (tx) {
+                tx.executeSql(query, binding, function (tx, result) {
+                    q.resolve(result);
+                },
+                  function (transaction, error) {
+                      q.reject(error);
+                  });
+            });
+            return q.promise;
+        },
+        //
+        execSqls: function (db, queries) {
+            var self = this,
+                d = this.q.defer();
+            db.transaction(function (tx) {
+                var qAll = [];
+                for (var i = 0; i < queries.length ; i++) {
+                    var queryItem = queries[i];
+
+                    if (!queryItem) continue;
+                    if (!queryItem.query) continue;
+
+                    (function (item) {
+                        var q = self.q.defer();
+                        console.log('executing query ' + item.query);
+                        tx.executeSql(item.query, item.binding, function (tx, result) {
+                            q.resolve(result);
+                            console.log('executed query', result);
+                        }, function (transaction, error) {
+                            q.reject(error);
+                            console.log('failed query', error);
+                        });
+                        qAll.push(q.promise);
+                    })(queryItem);
+                }
+                self.q.all(qAll).then(function (data) {
+                    console.log('all request resoved');
+                    d.resolve(data);
+                });
+            });
+            return d.promise;
+        },
+        //#endregion
+
+        //#region Camera
+        //var options = {
+        //    quality: 50,0-100
+        //    destinationType: Camera.DestinationType.DATA_URL,FILE_URI,NATIVE_URI
+        //    sourceType: Camera.PictureSourceType.CAMERA,PHOTOLIBRARY,SAVEDPHOTOALBUM
+        //    allowEdit: true,
+        //    encodingType: Camera.EncodingType.JPEG,
+        //    targetWidth: 100,
+        //    targetHeight: 100,
+        //    popoverOptions: CameraPopoverOptions,
+        //    saveToPhotoAlbum: false,
+        //    correctOrientation:true
+        //};
+        getPicture: function (options) {
+            var self = this;
+            //Removes intermediate image files that are kept in temporary storage after calling camera.getPicture
+            function cleanUp() {
+                var q = self.q.defer();
+                navigator.camera.cleanup(function () {
+                    q.resolve(null);
+                }, function (err) {
+                    q.reject(err);
+                });
+                return q.promise;
+            }
+            //Call camera plugin to obtain picture
+            function callPlugin(settings) {
+                var q = self.q.defer();
+                if (!navigator.camera) {
+                    q.resolve(null);
+                    return q.promise;
+                }
+                navigator.camera.getPicture(function (imageData) {
+                    q.resolve(imageData);
+                }, function (err) {
+                    q.reject(err);
+                }, settings);
+
+                return q.promise.finally(function () {
+                    if (settings.destinationType === Camera.DestinationType.FILE_URI &&
+                        settings.sourceType === Camera.PictureSourceType.CAMERA) {
+                        //Delete temp file
+                        cleanUp();
+                    }
+                });
+            }
+            var defaultOptions = {
+                quality: 50,
+                saveToPhotoAlbum: false,
+                destinationType: Camera.DestinationType.FILE_URI,
+                correctOrientation: true,
+                showMediaSelector: true,
+                sourceType: Camera.PictureSourceType.CAMERA
+            };
+            var settings = angular.extend(defaultOptions, options);
+
+            if (settings.showMediaSelector) {
+                var menus = ['Camera', 'Photo Library'];
+
+                if (settings.showDelete) {
+                    menus.push('Delete');
+                }
+                return this.showActionSheet(undefined, menus, true).then(function (buttonIndex) {
+                    switch (buttonIndex) {
+                        case 0:
+                            return callPlugin(settings);
+                        case 1:
+                            settings.sourceType = Camera.PictureSourceType.PHOTOLIBRARY;
+                            return callPlugin(settings);
+                        case 2:
+                            return self.common.rejectedPromise('delete');
+                    }
+                    return self.common.rejectedPromise('cancelled');
+                });
+            }
+            return callPlugin(settings);
+        },
+        //#endregion
+
         //#region Constructor
         //Constructor
-        init: function ($q, $window, config, localization) {
+        init: function ($q, $window, config, localization, common) {
             this._super();
             this.q = $q;
             this.window = $window;
             this.config = config;
             this.localization = localization;
+            this.common = common;
         }
         //#endregion
     });
@@ -192,9 +343,9 @@ define(['angular', 'base/BaseService', 'underscore'], function (angular, BaseSer
     //Register dialog service
     angular.module('rota.services.plugins', ['rota.services.localization']).factory('Plugins',
     [
-        '$q', '$window', 'Config', 'Localization',
-        function ($q, $window, config, localization) {
-            var instance = new PluginService($q, $window, config, localization);
+        '$q', '$window', 'Config', 'Localization', 'Common',
+        function ($q, $window, config, localization, common) {
+            var instance = new PluginService($q, $window, config, localization, common);
             return instance;
         }
     ]);

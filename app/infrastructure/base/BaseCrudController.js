@@ -308,7 +308,7 @@ define(['base/BaseController', 'angular'], function (BaseController, angular) {
             //BaseController constructor
             this._super(bundle);
             //Yeni kayit mi ? - Convention  : Eger id parametresi New veya Yeni ise yeni kayit modu aktif !
-            this.isNew = (this.isModal ? this.modal.modalParams : this.params).id === 'New';
+            this.isNew = (this.isModal ? this.modal.modalParams : this.params).id === 'new';
             //Flag varsayilan set
             this.isSaving =
             this.isDeleting =

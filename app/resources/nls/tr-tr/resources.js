@@ -61,8 +61,10 @@
 
     //#region Ynl resources
     nb: {
+        nobetci: 'Nöbetçi',
         nobetciler: 'Nöbetçiler',
-        hemsirelistesi: 'Hemşire Listesi'
+        hemsirelistesi: 'Nöbetçi Listesi',
+        toplamnobetcisayisi: 'Toplam nöbetçi sayısı'
     }
     //#endregion
 });

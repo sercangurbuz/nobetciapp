@@ -53,6 +53,8 @@
     <Content Include="app\infrastructure\lib\Class.js" />
     <Content Include="app\infrastructure\lib\i18n.js" />
     <Content Include="app\infrastructure\lib\Index.js" />
+    <Content Include="app\infrastructure\lib\jr-crop.js" />
+    <Content Include="app\infrastructure\lib\jr-crop.min.js" />
     <Content Include="app\infrastructure\lib\moment.min.js" />
     <Content Include="app\infrastructure\lib\underscore.min.js" />
     <Content Include="app\infrastructure\services\Caching.js" />
@@ -81,14 +83,12 @@
     <Content Include="app\nobetci\nobetciler\detay.js" />
     <Content Include="app\nobetci\nobetciler\liste.html" />
     <Content Include="app\nobetci\nobetciler\liste.js" />
+    <Content Include="app\nobetci\services\data.js" />
     <Content Include="app\resources\nls\en-us\resources.js" />
     <Content Include="app\resources\nls\resources.js" />
     <Content Include="app\resources\nls\tr-tr\resources.js" />
     <Content Include="app\startup.js" />
-    <Content Include="build\build.config.css.js" />
-    <Content Include="build\build.config.js" />
-    <Content Include="build\r.js" />
-    <Content Include="build\run.js" />
+    <Content Include="App_Resources\Android\AndroidManifest.xml" />
     <Content Include="cordova.android.js" />
     <Content Include="cordova.ios.js" />
     <Content Include="cordova.wp8.js" />
@@ -146,6 +146,7 @@
     <Content Include="css\index.min.css" />
     <Content Include="css\ionic.min.css" />
     <Content Include="css\ionicons.min.css" />
+    <Content Include="css\jr-crop.css" />
     <Content Include="css\rota.css" />
     <Content Include="css\rota.min.css" />
     <Content Include="fonts\ionicons.eot" />
@@ -169,8 +170,10 @@
     <Content Include="fonts\ubuntu\ubuntu-c.woff2" />
     <Content Include="img\arkas-bg.png" />
     <Content Include="img\arkas-logo.png" />
+    <Content Include="img\avatar.jpg" />
     <Content Include="img\sifa-logo.png" />
     <Content Include="img\tutorial.jpg" />
+    <Content Include="img\venkman.jpg" />
     <Content Include="img\ynl-arkas-bg.png" />
     <Content Include="index.debug.html" />
     <Content Include="index.release.html" />
@@ -211,7 +214,6 @@
     <Folder Include="App_Resources\WP8\Assets\" />
     <Folder Include="App_Resources\WP8\Tiles\" />
     <Folder Include="App_Resources\WP8\Tiles\Iconic\" />
-    <Folder Include="build\" />
     <Folder Include="css\" />
     <Folder Include="fonts\" />
     <Folder Include="fonts\SourceSansPro-It\" />

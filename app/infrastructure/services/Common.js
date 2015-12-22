@@ -133,7 +133,7 @@ define(['angular'], function (angular) {
                         delimiter = '&';
                     }
                     return uri;
-                },
+                }
             };
         }
         ]);

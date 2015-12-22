@@ -145,9 +145,26 @@ define(['angular', 'base/BaseService', 'underscore'], function (angular, BaseSer
         },
         //#endregion
 
+        //#region Cropping Picture
+        cropPicture: function (options) {
+            console.log('cropping ' + options.imageUrl);
+            if (!options.imageUrl) throw "imageUrl needed for cropping";
+
+            return this.$jrCrop.crop({
+                url: options.imageUrl,
+                circle: options.circle || false,
+                width: options.width || 200,
+                height: options.height || 200,
+                cancelText: 'Ýptal',
+                chooseText: 'Tamam'
+            }).then(function (canvas) {
+                return canvas.toDataURL();
+            });
+        },
+        //#endregion
         //#region Init
         //Constructor
-        init: function ($rootScope, $q, $window, $ionicPopup, $ionicActionSheet, $ionicLoading, config, localization) {
+        init: function ($rootScope, $q, $window, $ionicPopup, $ionicActionSheet, $ionicLoading, $jrCrop, config, localization) {
             this._super();
 
             this.rootScope = $rootScope;
@@ -158,6 +175,7 @@ define(['angular', 'base/BaseService', 'underscore'], function (angular, BaseSer
             this.window = $window;
             this.config = config;
             this.localization = localization;
+            this.$jrCrop = $jrCrop;
             //Loading Panel register events
             var self = this;
             $rootScope.$on(config.events.ajaxStarted, function () {
@@ -171,10 +189,10 @@ define(['angular', 'base/BaseService', 'underscore'], function (angular, BaseSer
     });
     //#region Register
     //Register dialog service
-    angular.module('rota.services.dialogs', ['rota.services.localization']).factory('Dialogs',
-    ['$rootScope', '$q', '$window', '$ionicPopup', '$ionicActionSheet', '$ionicLoading', 'Config', 'Localization',
-        function ($rootScope, $q, $window, $ionicPopup, $ionicActionSheet, $ionicLoading, config, localization) {
-            var instance = new DialogService($rootScope, $q, $window, $ionicPopup, $ionicActionSheet, $ionicLoading, config, localization);
+    angular.module('rota.services.dialogs', ['rota.services.localization', 'jrCrop']).factory('Dialogs',
+    ['$rootScope', '$q', '$window', '$ionicPopup', '$ionicActionSheet', '$ionicLoading', '$jrCrop', 'Config', 'Localization',
+        function ($rootScope, $q, $window, $ionicPopup, $ionicActionSheet, $ionicLoading, $jrCrop, config, localization) {
+            var instance = new DialogService($rootScope, $q, $window, $ionicPopup, $ionicActionSheet, $ionicLoading, $jrCrop, config, localization);
             return instance;
         }
     ]);

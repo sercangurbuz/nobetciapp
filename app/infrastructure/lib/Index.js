@@ -2,7 +2,8 @@
 
 define(['underscore',
         'Class',
-        'moment'],
+        'moment',
+        'jrcrop'],
     function () {
 
     });

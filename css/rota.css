@@ -1,5 +1,6 @@
 @import url('ionic.min.css');
 @import url('ionicons.min.css');
+@import url('jr-crop.css');
 
 /* Rota framework base styles */
 body {
@@ -52,7 +53,7 @@ ion-nav-view {
 }
 
 .scroll-content {
-    background: url('../img/sifa-logo.png') no-repeat center center;
+    background: url('../img/sifa-logoxx.png') no-repeat center center;
 }
 
 .popover .scroll-content {
