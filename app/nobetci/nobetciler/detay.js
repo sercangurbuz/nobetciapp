@@ -35,7 +35,10 @@ define(['config/App', 'base/BaseCrudController', 'nobetci/services/data'], funct
             });
         },
         sil: function (id) {
-            return this.dataApi.deleteById(id);
+            var self = this;
+            return this.dataApi.deletebyid(id).then(function() {
+                self.go("home.nobetciler");
+            });
         },
         getPhoto: function () {
             var self = this;
