@@ -34,14 +34,18 @@ define(['config/App', 'base/BaseCrudController', 'nobetci/services/data'], funct
                 console.log(err.message);
             });
         },
+        sil: function (id) {
+            return this.dataApi.deleteById(id);
+        },
         getPhoto: function () {
             var self = this;
             this.plugins.getPicture({
+                width: 300,
+                height: 300,
                 showDelete: this.scope.model.icon !== DEFAULT_AVATAR
             }).then(function (imageUrl) {
                 self.dialogs.cropPicture({
-                    imageUrl: imageUrl,
-                    circle: true
+                    imageUrl: imageUrl
                 }).then(function (imageData) {
                     self.scope.model.icon = imageData;
                 });
@@ -54,6 +58,7 @@ define(['config/App', 'base/BaseCrudController', 'nobetci/services/data'], funct
         extendScope: function () {
             this.scope.kaydet = this.kaydet.bind(this);
             this.scope.getPhoto = this.getPhoto.bind(this);
+            this.scope.sil = this.sil.bind(this);
         }
     });
     //Register

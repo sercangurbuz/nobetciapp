@@ -147,7 +147,6 @@ define(['angular', 'base/BaseService', 'underscore'], function (angular, BaseSer
 
         //#region Cropping Picture
         cropPicture: function (options) {
-            console.log('cropping ' + options.imageUrl);
             if (!options.imageUrl) throw "imageUrl needed for cropping";
 
             return this.$jrCrop.crop({
@@ -158,7 +157,7 @@ define(['angular', 'base/BaseService', 'underscore'], function (angular, BaseSer
                 cancelText: 'Ýptal',
                 chooseText: 'Tamam'
             }).then(function (canvas) {
-                return canvas.toDataURL();
+                return canvas.toDataURL('image/jpeg', 1.0);
             });
         },
         //#endregion

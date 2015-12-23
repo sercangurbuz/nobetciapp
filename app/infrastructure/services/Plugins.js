@@ -281,7 +281,8 @@ define(['angular', 'base/BaseService', 'underscore'], function (angular, BaseSer
                     return q.promise;
                 }
                 navigator.camera.getPicture(function (imageData) {
-                    q.resolve(imageData);
+                    var prefix = settings.destinationType === Camera.DestinationType.DATA_URL ? 'data:image/jpeg;base64,' : '';
+                    q.resolve(prefix + imageData);
                 }, function (err) {
                     q.reject(err);
                 }, settings);

@@ -29,6 +29,8 @@ define(['config/App', 'base/BaseApi'], function (app, BaseApiService) {
                     result.push(response.rows.item(i));
                 }
                 return result;
+            }, function (err) {
+                console.log(err.message);
             });
         },
         add: function (nobetci) {
@@ -38,8 +40,11 @@ define(['config/App', 'base/BaseApi'], function (app, BaseApiService) {
         update: function (nobetci) {
             console.log('updating ' + nobetci.icon);
             return this.plugins.execSql(this.db, 'update tbl_nobetciler set adsoyad=?,icon=? where id=?', [nobetci.adsoyad, nobetci.icon, nobetci.id]);
+        },
+        deletebyid: function (id) {
+            console.log('deleting ' + id);
+            return this.plugins.execSql(this.db, 'delete from tbl_nobetciler where id=?', [id]);
         }
-
     });
     //#region Register
     app.addServiceApi('dataApi', DataApi, ['Plugins']);
