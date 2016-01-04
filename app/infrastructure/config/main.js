@@ -9,11 +9,14 @@ require.config({
         ionic: './infrastructure/core/ionic/js/ionic.min',
         angularIonic: './infrastructure/core/ionic/js/ionic-angular.min',
         //NAMED AMD
+        'jquery': './infrastructure/core/jquery-1.9.1.min',
         'underscore': './infrastructure/lib/underscore.min',
         'Class': './infrastructure/lib/Class',
         'moment': './infrastructure/lib/moment.min',
         'i18n': './infrastructure/lib/i18n',
         'jrcrop': './infrastructure/lib/jr-crop',
+        'jSignature': './infrastructure/lib/jSignature.min',
+        'signaturepad': './infrastructure/lib/signature_pad.min',
         //AMD PATHS
         'base': './infrastructure/base',
         'config': './infrastructure/config',
@@ -33,7 +36,8 @@ require.config({
         'angularIonic': { exports: 'angularIonic', deps: ['angular', 'ionic', 'uiRouter', 'angularAnimate', 'angularSanitize'] },
         'underscore': { exports: '_' },
         'Class': { exports: 'Class' },
-        'jrcrop': { deps: ['angular', 'ionic'] }
+        'jrcrop': { deps: ['angular', 'ionic'] },
+        'jSignature': { exports: 'jSignature', deps: ['jquery'] }
 
     },
     priority: [

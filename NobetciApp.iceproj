@@ -53,11 +53,14 @@
     <Content Include="app\infrastructure\core\ionic\js\ionic.bundle.min.js" />
     <Content Include="app\infrastructure\core\ionic\js\ionic.js" />
     <Content Include="app\infrastructure\core\ionic\js\ionic.min.js" />
+    <Content Include="app\infrastructure\core\jquery-1.9.1.min.js" />
     <Content Include="app\infrastructure\core\require.js" />
     <Content Include="app\infrastructure\directives\Index.js" />
     <Content Include="app\infrastructure\directives\IonDatepicker.js" />
     <Content Include="app\infrastructure\directives\IonSearch.js" />
     <Content Include="app\infrastructure\directives\LocalizationFilter.js" />
+    <Content Include="app\infrastructure\directives\SignaturePad.js" />
+    <Content Include="app\infrastructure\directives\Signature.js" />
     <Content Include="app\infrastructure\filters\Index.js" />
     <Content Include="app\infrastructure\filters\Money.js" />
     <Content Include="app\infrastructure\lib\Class.js" />
@@ -65,7 +68,9 @@
     <Content Include="app\infrastructure\lib\Index.js" />
     <Content Include="app\infrastructure\lib\jr-crop.js" />
     <Content Include="app\infrastructure\lib\jr-crop.min.js" />
+    <Content Include="app\infrastructure\lib\jSignature.min.js" />
     <Content Include="app\infrastructure\lib\moment.min.js" />
+    <Content Include="app\infrastructure\lib\signature_pad.min.js" />
     <Content Include="app\infrastructure\lib\underscore.min.js" />
     <Content Include="app\infrastructure\services\Caching.js" />
     <Content Include="app\infrastructure\services\Common.js" />

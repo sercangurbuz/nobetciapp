@@ -117,3 +117,11 @@ input[type ="date"] {
     .error .popup-head h3 {
         color: #D85547 !important;
     }
+
+.signature {
+    width:300px;
+    margin: 10px auto;
+}
+.signature canvas {
+    background-color: #ebebeb;
+}

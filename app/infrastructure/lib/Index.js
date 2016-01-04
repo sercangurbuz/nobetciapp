@@ -3,7 +3,8 @@
 define(['underscore',
         'Class',
         'moment',
-        'jrcrop'],
+        'jrcrop',
+        'jSignature'],
     function () {
 
     });

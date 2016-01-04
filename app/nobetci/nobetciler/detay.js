@@ -18,7 +18,7 @@ define(['config/App', 'base/BaseCrudController', 'nobetci/services/data'], funct
             };
         },
         getModel: function () {
-            return this.dataApi.getNobetciById(this.params.id);
+            return {}; //this.dataApi.getNobetciById(this.params.id);
         },
         setModel: function (data) {
             data.model.icon = data.model.icon || DEFAULT_AVATAR;
@@ -36,7 +36,7 @@ define(['config/App', 'base/BaseCrudController', 'nobetci/services/data'], funct
         },
         sil: function (id) {
             var self = this;
-            return this.dataApi.deletebyid(id).then(function() {
+            return this.dataApi.deletebyid(id).then(function () {
                 self.go("home.nobetciler");
             });
         },
@@ -58,10 +58,38 @@ define(['config/App', 'base/BaseCrudController', 'nobetci/services/data'], funct
                 }
             });
         },
+        showSignature: function () {
+            var self = this,
+                scope = this.rootScope.$new(false);
+
+            //Scope methods
+            scope.save = function() {
+                if (scope.model.signaturePad.isEmpty()) {
+                    dialogs.showToast('Lutfen imza atiniz');
+                } else {
+                    var data = scope.model.signaturePad.toDataURL();
+                    return data;
+                }
+            };
+
+            scope.clear = function() {
+                scope.signaturePad.clear();
+            };
+
+            scope.model = {};
+            //Show modal
+            this.modal.showStdPopup(scope, 'Imza Formu', '<signature-pad></signature-pad>', function (e) {
+                return scope.save();
+            }, true, 'Ýmzala', 'Ýptal').then(function (data) {
+                debugger;
+                self.model.imza = data;
+            });
+        },
         extendScope: function () {
             this.scope.kaydet = this.kaydet.bind(this);
             this.scope.getPhoto = this.getPhoto.bind(this);
             this.scope.sil = this.sil.bind(this);
+            this.scope.showSignature = this.showSignature.bind(this);
         }
     });
     //Register

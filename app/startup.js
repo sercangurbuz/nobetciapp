@@ -17,10 +17,11 @@ define(['config/App'], function (app) {
     }).run([
         '$injector', 'Routing', 'Plugins', 'Config', function ($injector, routing, plugins) {
             //Create Db
-            var result = plugins.openDb("sifanobetci.db", [
-                { query: 'CREATE TABLE IF NOT EXISTS tbl_nobetciler (id integer primary key autoincrement, adsoyad varchar(250),icon text)' }
-               // { query: 'ALTER TABLE tbl_nobetciler ADD COLUMN icon text;' }
-            ]);
+
+            //var result = plugins.openDb("sifanobetci.db", [
+            //    { query: 'CREATE TABLE IF NOT EXISTS tbl_nobetciler (id integer primary key autoincrement, adsoyad varchar(250),icon text)' }
+            //    //{ query: 'ALTER TABLE tbl_nobetciler ADD COLUMN imza text;' }
+            //]);
 
             //Register routes
             var appViews = [
@@ -42,6 +43,13 @@ define(['config/App'], function (app) {
                     url: '/nobetciler/:id',
                     templateUrl: 'nobetci/nobetciler/detay',
                     controller: 'nobetciController',
+                    view: 'home-liste'
+                },
+                {
+                    state: 'home.imza',
+                    url: '/imza',
+                    templateUrl: 'nobetci/nobetciler/imza',
+                    controller: 'imzaController',
                     view: 'home-liste'
                 }
             ];

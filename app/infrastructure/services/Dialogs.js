@@ -143,9 +143,7 @@ define(['angular', 'base/BaseService', 'underscore'], function (angular, BaseSer
                 duration: 1500
             });
         },
-        //#endregion
-
-        //#region Cropping Picture
+        //Cropping Picture
         cropPicture: function (options) {
             if (!options.imageUrl) throw "imageUrl needed for cropping";
 
@@ -161,6 +159,7 @@ define(['angular', 'base/BaseService', 'underscore'], function (angular, BaseSer
             });
         },
         //#endregion
+
         //#region Init
         //Constructor
         init: function ($rootScope, $q, $window, $ionicPopup, $ionicActionSheet, $ionicLoading, $jrCrop, config, localization) {
