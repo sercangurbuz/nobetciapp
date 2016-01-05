@@ -65,9 +65,14 @@ define(['config/App', 'base/BaseCrudController', 'nobetci/services/data'], funct
             });
         },
 
-        showList: function() {
+        showList: function(p) {
+            debugger;
+            return this.scope.listdata;
+        },
 
-            //this.modal.showModal('<ion-list><ion-item ng-repeat="item in items">Hello, {{item}}!</ion-item></ion-list>',);
+        fetchItem: function (key) {
+            debugger;
+            return this.scope.listdata[0];
         },
         extendScope: function () {
             this.scope.kaydet = this.kaydet.bind(this);
@@ -78,6 +83,8 @@ define(['config/App', 'base/BaseCrudController', 'nobetci/services/data'], funct
                 { id: 3, adi: "hakan", soyad: "makan" }];
 
             this.scope.showList = this.showList.bind(this);
+            this.scope.fetchItem = this.fetchItem.bind(this);
+            
         }
     });
     //Register

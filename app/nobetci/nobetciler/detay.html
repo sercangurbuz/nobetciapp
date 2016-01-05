@@ -9,9 +9,10 @@
             </label>
 
             {{model.selectedId}}
-            <rt-select ng-model="model.selectedId"
+            <rt-select ng-model="1"
                        items="listdata"
-                       value-prop="id" 
+                       select="fetchItem"
+                       value-prop="id"
                        display-prop="adi"></rt-select>
 
         </div>

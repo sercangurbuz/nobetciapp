@@ -105,15 +105,6 @@ define(['angular', 'underscore'], function (angular, _) {
                         }
                         return result;
                     };
-                    //Set Model 
-                    var setModel = function (value, modelValue) {
-                        scope.selected.model = value;
-                        //
-                        if (setterSelectedModel && angular.noop != setterSelectedModel) {
-                            setterSelectedModel.assign(scope, value);
-                        }
-                        //scope.tooltip = value && (modelValue + '-' + value[attrs.displayProp]);
-                    };
                     //Eger value prop tanýmlþanmiþsa valueyu yoksa tum objeyi
                     var getValueMapper = function (itemObject) {
                         return valuePropGetter ? valuePropGetter(itemObject) : itemObject;
@@ -146,8 +137,8 @@ define(['angular', 'underscore'], function (angular, _) {
                         );
                         return d.promise;
                     };
-                    //AutoSuggest get item by key method
-                    var getAutoSuggestItem = function (key) {
+                    //Get item by key method
+                    var getItem = function (key) {
                         //Sonuc promisini dondur veya verilen concrete objyi promise cevir
                         return callMethod(selectMethod, key).then(function (data) {
                             return data;
@@ -156,18 +147,6 @@ define(['angular', 'underscore'], function (angular, _) {
                     //#endregion
 
                     //#region Listing Methods
-                    //Init AutoSuggest
-                    var initAutoSuggest = function () {
-                        //AutoSuggest get list function
-                        scope.refreshFn = function (keyword) {
-                            if (keyword && minAutoSuggestCharLen <= keyword.length) {
-                                //Sonuc promisini dondur veya verilen concrete objyi promise cevir
-                                return callMethod(refreshMethod, keyword).then(function (data) {
-                                    return data;
-                                });
-                            }
-                        };
-                    };
                     //Init All Items
                     var initAllItems = function () {
                         var d = $q.defer();
@@ -188,7 +167,7 @@ define(['angular', 'underscore'], function (angular, _) {
                         }
                         return d.promise;
                     };
-                    //
+                    //Set selected item
                     var setSelectedItem = function (item) {
                         //Secili objnin value degerini aliyoruz
                         var modelValue = getValueMapper(item);
@@ -212,10 +191,19 @@ define(['angular', 'underscore'], function (angular, _) {
 
                         listscope.$watch('filter.keywords', function (searchValue, oldValue) {
                             if (searchValue) {
-                                listscope.filteredItems = _.filter(listscope.items, function (item) {
-                                    var displayText = item[displayProp].toLowerCase();
-                                    return displayText.indexOf(searchValue) > -1;
-                                });
+                                if (autoSuggest) {
+                                    if (minAutoSuggestCharLen <= searchValue.length) {
+                                        callMethod(refreshMethod, searchValue).then(function (data) {
+                                            listscope.filteredItems = data;
+                                        });
+                                    }
+                                } else {
+                                    //filter items
+                                    listscope.filteredItems = _.filter(listscope.items, function (item) {
+                                        var displayText = item[displayProp].toLowerCase();
+                                        return displayText.indexOf(searchValue) > -1;
+                                    });
+                                }
                             } else {
                                 listscope.filteredItems = listscope.items;
                             }
@@ -246,12 +234,22 @@ define(['angular', 'underscore'], function (angular, _) {
                     //Init List
                     scope.initList = function () {
                         //get data
-                        var p = initAllItems();
+                        var p = autoSuggest ? common.promise() : initAllItems();
                         //show list after data is fetched
                         return p.then(function (data) {
-                            return showList(data);
+                            return showList(data || []);
                         });
                     }
+                    //#endregion
+
+                    //#region Init
+                    scope.$watch(attrs.ngModel, function (modelValue) {
+                        if (modelValue) {
+                            getItem(modelValue).then(function (item) {
+                                setSelectedItem(item);
+                            });
+                        }
+                    });
                     //#endregion
                 },
                 template: '<label class="rt-select item item-input item-select" ng-click="initList()">' +
