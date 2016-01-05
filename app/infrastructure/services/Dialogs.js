@@ -1,6 +1,6 @@
 'use strict';
 
-define(['angular', 'base/BaseService', 'underscore'], function (angular, BaseService, _) {
+define(['angular', 'base/BaseService', 'underscore', 'signaturepad'], function (angular, BaseService, _, signaturepad) {
     //Dilaog Service
     var DialogService = BaseService.extend({
         //#region Methods
@@ -158,11 +158,35 @@ define(['angular', 'base/BaseService', 'underscore'], function (angular, BaseSer
                 return canvas.toDataURL('image/jpeg', 1.0);
             });
         },
+        //Show Signature Form
+        showSignatureForm: function () {
+            var self = this,
+                markup = '<ion-modal-view cache-view="false"><div class="bar bar-header bar-assertive">' +
+                        '<h1 class="title">Imza Formu</h1></div><ion-content class="has-header" scroll="false">' +
+                        '<signature-pad></signature-pad>' +
+                        '<button class="button button-full button-outline button-positive" ng-click="save()">Tamam</button>' +
+                        '<button class="button button-full button-outline button-assertive" ng-click="closeModal()">Ýptal</button>' +
+                        '</ion-content></ion-modal-view>',
+                scope = this.rootScope.$new(false);
+
+            //Scope methods
+            scope.save = function () {
+                if (scope.model.signaturePad.isEmpty()) {
+                    self.showToast('Lutfen imza atiniz');
+                } else {
+                    var data = scope.model.signaturePad.toDataURL("image/jpeg");
+                    scope.modalResult(data);
+                }
+            };
+            scope.model = {};
+            //Show modal
+            return this.modal.showModal(markup, { scope: scope });
+        },
         //#endregion
 
         //#region Init
         //Constructor
-        init: function ($rootScope, $q, $window, $ionicPopup, $ionicActionSheet, $ionicLoading, $jrCrop, config, localization) {
+        init: function ($rootScope, $q, $window, $ionicPopup, $ionicActionSheet, $ionicLoading, $jrCrop, config, localization, modal) {
             this._super();
 
             this.rootScope = $rootScope;
@@ -174,6 +198,7 @@ define(['angular', 'base/BaseService', 'underscore'], function (angular, BaseSer
             this.config = config;
             this.localization = localization;
             this.$jrCrop = $jrCrop;
+            this.modal = modal;
             //Loading Panel register events
             var self = this;
             $rootScope.$on(config.events.ajaxStarted, function () {
@@ -188,9 +213,10 @@ define(['angular', 'base/BaseService', 'underscore'], function (angular, BaseSer
     //#region Register
     //Register dialog service
     angular.module('rota.services.dialogs', ['rota.services.localization', 'jrCrop']).factory('Dialogs',
-    ['$rootScope', '$q', '$window', '$ionicPopup', '$ionicActionSheet', '$ionicLoading', '$jrCrop', 'Config', 'Localization',
-        function ($rootScope, $q, $window, $ionicPopup, $ionicActionSheet, $ionicLoading, $jrCrop, config, localization) {
-            var instance = new DialogService($rootScope, $q, $window, $ionicPopup, $ionicActionSheet, $ionicLoading, $jrCrop, config, localization);
+    ['$rootScope', '$q', '$window', '$ionicPopup', '$ionicActionSheet', '$ionicLoading', '$jrCrop', 'Config', 'Localization', 'Modal',
+        function ($rootScope, $q, $window, $ionicPopup, $ionicActionSheet, $ionicLoading, $jrCrop, config, localization, modal) {
+            var instance = new DialogService($rootScope, $q, $window, $ionicPopup,
+                $ionicActionSheet, $ionicLoading, $jrCrop, config, localization, modal);
             return instance;
         }
     ]);

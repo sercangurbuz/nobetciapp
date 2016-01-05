@@ -18,10 +18,10 @@ define(['config/App'], function (app) {
         '$injector', 'Routing', 'Plugins', 'Config', function ($injector, routing, plugins) {
             //Create Db
 
-            //var result = plugins.openDb("sifanobetci.db", [
-            //    { query: 'CREATE TABLE IF NOT EXISTS tbl_nobetciler (id integer primary key autoincrement, adsoyad varchar(250),icon text)' }
-            //    //{ query: 'ALTER TABLE tbl_nobetciler ADD COLUMN imza text;' }
-            //]);
+            var result = plugins.openDb("sifanobetci.db", [
+                { query: 'CREATE TABLE IF NOT EXISTS tbl_nobetciler (id integer primary key autoincrement, adsoyad varchar(250),icon text,imza text)' }
+                //{ query: 'ALTER TABLE tbl_nobetciler ADD COLUMN imza text;' }
+            ]);
 
             //Register routes
             var appViews = [

@@ -4,7 +4,7 @@ define(['underscore',
         'Class',
         'moment',
         'jrcrop',
-        'jSignature'],
+        'signaturepad'],
     function () {
 
     });

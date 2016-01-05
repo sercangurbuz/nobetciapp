@@ -86,8 +86,10 @@ define(['angular', 'base/BaseService', 'services/Localization', 'services/Common
             modalOptions.scope.$on('modal.hidden', function () {
                 defer.reject(self.CANCELLED_ACTION);
             });
+            //
+            var showMethod = this.common.isHtml(template) ? "fromTemplateUrl" : "fromTemplate";
             //ionicModal objesini olustur
-            this.ionicModal.fromTemplateUrl(template, modalOptions).then(function (modal) {
+            this.common.makePromise(this.ionicModal[showMethod](template, modalOptions)).then(function (modal) {
                 modalOptions.scope.modal = modal;
                 //Modal pencereyi kaydet
                 modal.show();

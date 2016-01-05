@@ -18,7 +18,7 @@ define(['config/App', 'base/BaseCrudController', 'nobetci/services/data'], funct
             };
         },
         getModel: function () {
-            return {}; //this.dataApi.getNobetciById(this.params.id);
+            return this.dataApi.getNobetciById(this.params.id);
         },
         setModel: function (data) {
             data.model.icon = data.model.icon || DEFAULT_AVATAR;
@@ -59,29 +59,8 @@ define(['config/App', 'base/BaseCrudController', 'nobetci/services/data'], funct
             });
         },
         showSignature: function () {
-            var self = this,
-                scope = this.rootScope.$new(false);
-
-            //Scope methods
-            scope.save = function() {
-                if (scope.model.signaturePad.isEmpty()) {
-                    dialogs.showToast('Lutfen imza atiniz');
-                } else {
-                    var data = scope.model.signaturePad.toDataURL();
-                    return data;
-                }
-            };
-
-            scope.clear = function() {
-                scope.signaturePad.clear();
-            };
-
-            scope.model = {};
-            //Show modal
-            this.modal.showStdPopup(scope, 'Imza Formu', '<signature-pad></signature-pad>', function (e) {
-                return scope.save();
-            }, true, 'Ýmzala', 'Ýptal').then(function (data) {
-                debugger;
+            var self = this;
+            this.dialogs.showSignatureForm().then(function (data) {
                 self.model.imza = data;
             });
         },

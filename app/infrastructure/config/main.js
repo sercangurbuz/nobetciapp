@@ -15,7 +15,6 @@ require.config({
         'moment': './infrastructure/lib/moment.min',
         'i18n': './infrastructure/lib/i18n',
         'jrcrop': './infrastructure/lib/jr-crop',
-        'jSignature': './infrastructure/lib/jSignature.min',
         'signaturepad': './infrastructure/lib/signature_pad.min',
         //AMD PATHS
         'base': './infrastructure/base',
@@ -36,9 +35,7 @@ require.config({
         'angularIonic': { exports: 'angularIonic', deps: ['angular', 'ionic', 'uiRouter', 'angularAnimate', 'angularSanitize'] },
         'underscore': { exports: '_' },
         'Class': { exports: 'Class' },
-        'jrcrop': { deps: ['angular', 'ionic'] },
-        'jSignature': { exports: 'jSignature', deps: ['jquery'] }
-
+        'jrcrop': { deps: ['angular', 'ionic'] }
     },
     priority: [
         "angular"

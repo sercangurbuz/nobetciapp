@@ -9,7 +9,7 @@ define(['config/App', 'base/BaseApi'], function (app, BaseApiService) {
         //Constructor
         init: function (bundle, plugins) {
             this.plugins = plugins;
-           // this.db = plugins.openDb("sifanobetci.db");
+            this.db = plugins.openDb("sifanobetci.db");
             this._super(bundle);
         },
         getNobetciById: function (id) {
@@ -35,11 +35,11 @@ define(['config/App', 'base/BaseApi'], function (app, BaseApiService) {
         },
         add: function (nobetci) {
             console.log('inserting');
-            return this.plugins.execSql(this.db, 'insert into tbl_nobetciler (adsoyad,icon) values (?,?)', [nobetci.adsoyad, nobetci.icon]);
+            return this.plugins.execSql(this.db, 'insert into tbl_nobetciler (adsoyad,icon,imza) values (?,?,?)', [nobetci.adsoyad, nobetci.icon, nobetci.imza]);
         },
         update: function (nobetci) {
             console.log('updating ' + nobetci.icon);
-            return this.plugins.execSql(this.db, 'update tbl_nobetciler set adsoyad=?,icon=? where id=?', [nobetci.adsoyad, nobetci.icon, nobetci.id]);
+            return this.plugins.execSql(this.db, 'update tbl_nobetciler set adsoyad=?,icon=?,imza=? where id=?', [nobetci.adsoyad, nobetci.icon, nobetci.imza, nobetci.id]);
         },
         deletebyid: function (id) {
             console.log('deleting ' + id);

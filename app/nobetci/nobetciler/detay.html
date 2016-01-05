@@ -8,12 +8,16 @@
                 <input type="text" placeholder="Nobetci Adi" ng-model="model.adsoyad">
             </label>
         </div>
-
-        <button class="button button-outline button-positive button-sm" ng-click="showSignature()">
-            Imzala
-        </button>
-        {{model.imza}}
-
+        <div class="text-center ">
+            <button class="button button-outline button-positive button-sm" ng-click="showSignature()">
+                Imzala
+            </button>
+            <button ng-if="model.imza" class="button button-outline button-assertive button-sm" ng-click="model.imza=null;">
+                Sil
+            </button>
+            <p></p>
+            <img ng-if="model.imza" src="{{model.imza}}"/>
+        </div>
 
     </ion-content>
     <div class="bar bar-footer bar-light">

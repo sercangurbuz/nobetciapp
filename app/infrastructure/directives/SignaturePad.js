@@ -1,23 +1,18 @@
 'use strict';
 
-define(['angular', 'signaturepad', 'jquery'], function (angular, signaturepad, $) {
+define(['angular', 'signaturepad', 'jquery'], function (angular, signature, $) {
     angular.module('rota.directives.signature', [])
-        .directive('signaturePad', ['Dialogs', function (dialogs) {
+        .directive('signaturePad', [function () {
             return {
                 restrict: 'EA',
                 replace: true,
-                link: function (scope, element, attrs, ngModelCtrl) {
+                link: function (scope, element) {
                     var canvas = $('canvas', element)[0];
-                    scope.model.signaturePad = new SignaturePad(canvas);
-
-                    //var ratio = Math.max(window.devicePixelRatio || 1, 1);
-                    //canvas.width = canvas.offsetWidth * ratio;
-                    //canvas.height = canvas.offsetHeight * ratio;
-                    //canvas.getContext("2d").scale(ratio, ratio);
-                  
+                    scope.model.signaturePad = new SignaturePad(canvas, {
+                        backgroundColor: '#ebebeb'
+                    });
                 },
                 template: '<div class="signature"><canvas></canvas></div>'
             };
-        }
-        ]);
+        }]);
 })
