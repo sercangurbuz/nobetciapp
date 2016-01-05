@@ -7,9 +7,9 @@ define(['config/App', 'base/BaseCrudController', 'nobetci/services/data'], funct
         //Module Id
         ModuleId: 'NobetciController',
         //Contructor
-        init: function (bundle, dataApi, $jrCrop) {
+        init: function (bundle, dataApi,  $templateCache) {
             this.dataApi = dataApi;
-            this.$jrCrop = $jrCrop;
+            this.$templateCache = $templateCache;
             this._super(bundle);
         },
         newModel: function () {
@@ -18,7 +18,7 @@ define(['config/App', 'base/BaseCrudController', 'nobetci/services/data'], funct
             };
         },
         getModel: function () {
-            return this.dataApi.getNobetciById(this.params.id);
+            return {};//return this.dataApi.getNobetciById(this.params.id);
         },
         setModel: function (data) {
             data.model.icon = data.model.icon || DEFAULT_AVATAR;
@@ -64,13 +64,22 @@ define(['config/App', 'base/BaseCrudController', 'nobetci/services/data'], funct
                 self.model.imza = data;
             });
         },
+
+        showList: function() {
+
+            //this.modal.showModal('<ion-list><ion-item ng-repeat="item in items">Hello, {{item}}!</ion-item></ion-list>',);
+        },
         extendScope: function () {
             this.scope.kaydet = this.kaydet.bind(this);
             this.scope.getPhoto = this.getPhoto.bind(this);
             this.scope.sil = this.sil.bind(this);
             this.scope.showSignature = this.showSignature.bind(this);
+            this.scope.listdata = [{ id: 1, adi: "sercan", soyad: "gurbuz" }, { id: 2, adi: "mehmet", soyad: "ali" },
+                { id: 3, adi: "hakan", soyad: "makan" }];
+
+            this.scope.showList = this.showList.bind(this);
         }
     });
     //Register
-    app.addController('nobetciController', NobetciController, ['dataApi']);
+    app.addController('nobetciController', NobetciController, ['dataApi', '$templateCache']);
 });

@@ -119,9 +119,14 @@ input[type ="date"] {
     }
 
 .signature {
-    width:300px;
+    width: 300px;
     margin: 10px auto;
 }
-.signature canvas {
-    background-color: #ebebeb;
+
+.rt-select {
 }
+
+    .rt-select .placeholder {
+        color: #aeadad;
+        font-style: italic;
+    }

@@ -7,6 +7,13 @@
             <label class="item item-input" style="margin-top: 10px">
                 <input type="text" placeholder="Nobetci Adi" ng-model="model.adsoyad">
             </label>
+
+            {{model.selectedId}}
+            <rt-select ng-model="model.selectedId"
+                       items="listdata"
+                       value-prop="id" 
+                       display-prop="adi"></rt-select>
+
         </div>
         <div class="text-center ">
             <button class="button button-outline button-positive button-sm" ng-click="showSignature()">
@@ -16,7 +23,7 @@
                 Sil
             </button>
             <p></p>
-            <img ng-if="model.imza" src="{{model.imza}}"/>
+            <img ng-if="model.imza" src="{{model.imza}}" />
         </div>
 
     </ion-content>

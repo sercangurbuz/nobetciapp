@@ -11,7 +11,7 @@ define(['config/App', 'base/BaseCrudController','nobetci/services/data'], functi
             this._super(bundle);
         },
         getModel: function () {
-            return this.dataApi.getList();
+            return {};//this.dataApi.getList();
         },
         enter: function() {
             return this.refresh();

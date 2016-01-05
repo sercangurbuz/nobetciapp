@@ -9,7 +9,7 @@ define(['config/App', 'base/BaseApi'], function (app, BaseApiService) {
         //Constructor
         init: function (bundle, plugins) {
             this.plugins = plugins;
-            this.db = plugins.openDb("sifanobetci.db");
+            //this.db = plugins.openDb("sifanobetci.db");
             this._super(bundle);
         },
         getNobetciById: function (id) {

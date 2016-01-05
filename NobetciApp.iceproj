@@ -59,6 +59,7 @@
     <Content Include="app\infrastructure\directives\IonDatepicker.js" />
     <Content Include="app\infrastructure\directives\IonSearch.js" />
     <Content Include="app\infrastructure\directives\LocalizationFilter.js" />
+    <Content Include="app\infrastructure\directives\rtSelect.js" />
     <Content Include="app\infrastructure\directives\SignaturePad.js" />
     <Content Include="app\infrastructure\filters\Index.js" />
     <Content Include="app\infrastructure\filters\Money.js" />
