@@ -168,11 +168,11 @@ define(['angular', 'underscore'], function (angular, _) {
                         return d.promise;
                     };
                     //Set selected item
-                    var setSelectedItem = function (item) {
+                    var setSelectedItem = function (item, updateModel) {
                         //Secili objnin value degerini aliyoruz
                         var modelValue = getValueMapper(item);
                         //Viewmodeli update ediyoruz
-                        ngModelCtrl.$setViewValue(modelValue);
+                        updateModel && ngModelCtrl.$setViewValue(modelValue);
                         //Trigger item select index chaaged
                         callEvent(onSelect, {
                             modelValue: modelValue,
@@ -228,7 +228,7 @@ define(['angular', 'underscore'], function (angular, _) {
                         //Show modal
                         return modal.showModal(markup, { scope: listscope }).then(function (selectedItem) {
                             //set selected item
-                            setSelectedItem(selectedItem);
+                            setSelectedItem(selectedItem, true);
                         });
                     }
                     //Init List

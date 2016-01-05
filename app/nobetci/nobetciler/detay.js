@@ -7,7 +7,7 @@ define(['config/App', 'base/BaseCrudController', 'nobetci/services/data'], funct
         //Module Id
         ModuleId: 'NobetciController',
         //Contructor
-        init: function (bundle, dataApi,  $templateCache) {
+        init: function (bundle, dataApi, $templateCache) {
             this.dataApi = dataApi;
             this.$templateCache = $templateCache;
             this._super(bundle);
@@ -22,6 +22,7 @@ define(['config/App', 'base/BaseCrudController', 'nobetci/services/data'], funct
         },
         setModel: function (data) {
             data.model.icon = data.model.icon || DEFAULT_AVATAR;
+            data.model.selectedId = 1;
             return data.model;
         },
         kaydet: function () {
@@ -65,14 +66,13 @@ define(['config/App', 'base/BaseCrudController', 'nobetci/services/data'], funct
             });
         },
 
-        showList: function(p) {
+        showList: function (p) {
             debugger;
             return this.scope.listdata;
         },
 
         fetchItem: function (key) {
-            debugger;
-            return this.scope.listdata[0];
+            return this.scope.listdata[key];
         },
         extendScope: function () {
             this.scope.kaydet = this.kaydet.bind(this);
@@ -81,10 +81,9 @@ define(['config/App', 'base/BaseCrudController', 'nobetci/services/data'], funct
             this.scope.showSignature = this.showSignature.bind(this);
             this.scope.listdata = [{ id: 1, adi: "sercan", soyad: "gurbuz" }, { id: 2, adi: "mehmet", soyad: "ali" },
                 { id: 3, adi: "hakan", soyad: "makan" }];
-
             this.scope.showList = this.showList.bind(this);
             this.scope.fetchItem = this.fetchItem.bind(this);
-            
+
         }
     });
     //Register
