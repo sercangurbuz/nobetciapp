@@ -14,8 +14,8 @@ define(['angular', 'underscore'], function (angular, _) {
     };
     //#endregion
 
-    var directive = ['$rootScope', '$parse', '$injector', '$q', 'Localization', 'Common', 'Modal',
-        function ($rootScope, $parse, $injector, $q, localization, common, modal) {
+    var directive = ['$rootScope', '$parse', '$injector', '$q', 'Localization', 'Common', 'Modal', 'CommonUI',
+        function ($rootScope, $parse, $injector, $q, localization, common, modal, commonui) {
             return {
                 restrict: 'EA',
                 require: 'ngModel',
@@ -33,11 +33,6 @@ define(['angular', 'underscore'], function (angular, _) {
                         params = $parse(attrs.params),
                         onSelect = $parse(attrs.onSelect),
                         valuePropGetter = attrs.valueProp && $parse(attrs.valueProp),
-                        setterPromise = attrs.promise && $parse(attrs.promise),
-                        setterData = attrs.data && $parse(attrs.data),
-                        setterSelectedModel = attrs.selectedModel && $parse(attrs.selectedModel),
-                        newItemOptions = attrs.newItemOptions && $parse(attrs.newItemOptions)(scope),
-                        searchOptions = attrs.searchOptions && $parse(attrs.searchOptions)(scope),
                         bindModel = angular.isDefined(attrs.bindModel),
                         displayProp = (attrs.displayProp ? attrs.displayProp : OBJ_DISPLAY_PROP_NAME),
                         displayPropSufix = '.' + displayProp;
@@ -180,7 +175,7 @@ define(['angular', 'underscore'], function (angular, _) {
                             scope: scope
                         });
                         //set display text
-                        scope.displayText = item[displayProp];
+                        scope.displayText = item && item[displayProp];
                     };
                     //Show selection list
                     var showList = function (items) {
@@ -214,12 +209,12 @@ define(['angular', 'underscore'], function (angular, _) {
                                      '  <div class="bar bar-header bar-positive item-input-inset">' +
                                      '      <label class="item-input-wrapper">' +
                                      '          <i class="icon ion-ios-search placeholder-icon"></i>' +
-                                     '          <input type="search" placeholder="Ara...">' +
+                                     '          <input type="search" placeholder="Ara..." ng-model="filter.keywords">' +
                                      '      </label>' +
                                      '      <button class="button button-clear" ng-click="closeModal()">Kapat</button>' +
                                      '  </div>' +
                                      '  <ion-content class="has-header">' +
-                                     '      <ion-list type="list-inset">' +
+                                     '      <ion-list>' +
                                      '          <ion-item class="item-icon-right" ng-click="modalResult(item)" ng-repeat="item in filteredItems">{{item?}}' +
                                      '              <i class="icon ion-checkmark-circled positive"></i>' +
                                      '          </ion-item>' +
@@ -243,19 +238,25 @@ define(['angular', 'underscore'], function (angular, _) {
                             return showList(data || []);
                         });
                     }
+
+                    scope.clearModel = function () {
+                        ngModelCtrl.$setViewValue(undefined);
+                    }
                     //#endregion
 
                     //#region Init
                     scope.$watch(attrs.ngModel, function (modelValue) {
-                        if (modelValue) {
-                            getItem(modelValue).then(function (item) {
-                                setSelectedItem(item);
-                            });
+                        if (!modelValue) {
+                            setSelectedItem();
+                            commonui.showToast('Seçim kaldirildi');
                         }
+                        getItem(modelValue).then(function (item) {
+                            setSelectedItem(item);
+                        });
                     });
                     //#endregion
                 },
-                template: '<label class="rt-select item item-input item-select" ng-click="initList()">' +
+                template: '<label class="rt-select item item-input item-select" ng-click="initList()" on-hold="clearModel()">' +
                           '  <div class="input-label">{{displayText}}' +
                           '     <span ng-hide="displayText" class="placeholder">Seçiniz...</span>' +
                           '  </div>' +
