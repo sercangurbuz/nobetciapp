@@ -1,6 +1,6 @@
 'use strict';
 
-define(['config/App', 'base/BaseCrudController', 'nobetci/services/data'], function (app, BaseCrudController) {
+define(['config/App', 'base/BaseCrudController', 'nobetci/services/data','underscore'], function (app, BaseCrudController,_) {
 
     var DEFAULT_AVATAR = 'img/avatar.jpg';
     var NobetciController = BaseCrudController.extend({
@@ -67,12 +67,11 @@ define(['config/App', 'base/BaseCrudController', 'nobetci/services/data'], funct
         },
 
         showList: function (p) {
-            debugger;
             return this.scope.listdata;
         },
 
         fetchItem: function (key) {
-            return this.scope.listdata[key];
+            return this.find(this.scope.listdata, { id: key });
         },
         extendScope: function () {
             this.scope.kaydet = this.kaydet.bind(this);

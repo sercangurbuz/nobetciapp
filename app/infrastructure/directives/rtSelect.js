@@ -211,15 +211,18 @@ define(['angular', 'underscore'], function (angular, _) {
 
                         //list markup
                         var markup = '<ion-modal-view cache-view="false">' +
-                                     '  <div class="bar bar-header item-input-inset">' +
-                                     '      <label class="item-input-wrapper textbox-search">' +
-                                     '          <i class="icon ion-ios7-search placeholder-icon"></i>' +
-                                     '          <input type="search" placeholder="Ara..." ng-model="filter.keywords">' +
+                                     '  <div class="bar bar-header bar-positive item-input-inset">' +
+                                     '      <label class="item-input-wrapper">' +
+                                     '          <i class="icon ion-ios-search placeholder-icon"></i>' +
+                                     '          <input type="search" placeholder="Ara...">' +
                                      '      </label>' +
+                                     '      <button class="button button-clear" ng-click="closeModal()">Kapat</button>' +
                                      '  </div>' +
                                      '  <ion-content class="has-header">' +
-                                     '      <ion-list>' +
-                                     '          <ion-item ng-click="modalResult(item)" ng-repeat="item in filteredItems">{{item?}}</ion-item>' +
+                                     '      <ion-list type="list-inset">' +
+                                     '          <ion-item class="item-icon-right" ng-click="modalResult(item)" ng-repeat="item in filteredItems">{{item?}}' +
+                                     '              <i class="icon ion-checkmark-circled positive"></i>' +
+                                     '          </ion-item>' +
                                      '      </ion-list>' +
                                      '  </ion-content>' +
                                      '</ion-modal-view>';
