@@ -256,7 +256,7 @@ define(['angular', 'underscore'], function (angular, _) {
                     });
                     //#endregion
                 },
-                template: '<label class="rt-select item item-input item-select" ng-click="initList()" on-hold="clearModel()">' +
+                template: '<label class="rt-select item item-input item-select" on-tap="initList()" on-hold="clearModel()">' +
                           '  <div class="input-label">{{displayText}}' +
                           '     <span ng-hide="displayText" class="placeholder">Seçiniz...</span>' +
                           '  </div>' +
