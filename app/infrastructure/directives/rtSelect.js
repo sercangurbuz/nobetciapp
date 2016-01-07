@@ -209,9 +209,9 @@ define(['angular', 'underscore'], function (angular, _) {
                                      '  <div class="bar bar-header bar-positive item-input-inset">' +
                                      '      <label class="item-input-wrapper">' +
                                      '          <i class="icon ion-ios-search placeholder-icon"></i>' +
-                                     '          <input type="search" placeholder="Ara..." ng-model="filter.keywords">' +
+                                     '          <input type="search" placeholder="' + localization.get('rota.ara') + '" ng-model="filter.keywords">' +
                                      '      </label>' +
-                                     '      <button class="button button-clear" ng-click="closeModal()">Kapat</button>' +
+                                     '      <button class="button button-clear" ng-click="closeModal()" i18n="rota.kapat"></button>' +
                                      '  </div>' +
                                      '  <ion-content class="has-header">' +
                                      '      <ion-list>' +
@@ -238,29 +238,38 @@ define(['angular', 'underscore'], function (angular, _) {
                             return showList(data || []);
                         });
                     }
-
+                    //Clear model
                     scope.clearModel = function () {
                         ngModelCtrl.$setViewValue(undefined);
                     }
                     //#endregion
 
                     //#region Init
+                    //Watch ngModel
                     scope.$watch(attrs.ngModel, function (modelValue) {
                         if (!modelValue) {
                             setSelectedItem();
-                            commonui.showToast('Seçim kaldirildi');
+                            commonui.showToast(localization.get('rota.secimkaldirildi'));
                         }
                         getItem(modelValue).then(function (item) {
                             setSelectedItem(item);
                         });
                     });
+                    //Watch ngDisabled
+                    scope.$watch(attrs.ngDisabled, function (newValue) {
+                        scope.isDisabled = newValue;
+                    });
                     //#endregion
                 },
-                template: '<label class="rt-select item item-input item-select" on-tap="initList()" on-hold="clearModel()">' +
-                          '  <div class="input-label">{{displayText}}' +
-                          '     <span ng-hide="displayText" class="placeholder">Seçiniz...</span>' +
-                          '  </div>' +
-                          '</label>'
+                template: function (elem, attrs) {
+                    return '<label class="rt-select item item-input item-select" on-tap="isDisabled || initList()" on-hold="isDisabled || clearModel()">' +
+                           '  <div class="input-label">{{displayText}}' +
+                           '     <span ng-hide="displayText" class="placeholder">' +
+                           localization.get(attrs.phI18n || 'rota.seciniz') +
+                           '</span>' +
+                           '  </div>' +
+                           '</label>';
+                }
             }
         }
     ];

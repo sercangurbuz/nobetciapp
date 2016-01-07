@@ -35,7 +35,7 @@
         kullanicipasswordgiriniz: 'Kullanıcı adı ve şifreyi kontrol ediniz !',
         iletisim: 'İletişim',
         cikis: 'Çıkış',
-        kapat: 'Uygulamayi kapat',
+        uyulamayikapat: 'Uygulamayi kapat',
         cikisonay: 'Aktif kullanıcıdan çıkış yapılacak ?',
         geri: 'Geri',
         offline: 'Internet bağlantınız kesildi !',
@@ -54,8 +54,11 @@
         kullanmayabasla: 'Kullanmaya başla',
         intro: 'Intro',
         uygdurduruldu: 'Uygulama geçici süreliğine kullanım dışıdır.Konu hakkında en kısa sürede bilgilendiriliceksiniz.',
-        verhatali: 'Yeni versiyon bulundu (ver : {0}).Lütfen her zaman güncel versiyonu kullanınız'
-
+        verhatali: 'Yeni versiyon bulundu (ver : {0}).Lütfen her zaman güncel versiyonu kullanınız',
+        seciniz: 'Seçiniz..',
+        secimkaldirildi: 'Seçim kaldirildi',
+        ara: 'Ara...',
+        kapat:'Kapat'
     },
     //#endregion
 
