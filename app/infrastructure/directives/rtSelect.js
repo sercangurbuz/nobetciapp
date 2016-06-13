@@ -64,11 +64,11 @@ define(['angular', 'underscore'], function (angular, _) {
                             var filterParam = bindModel ? args : args[0];
                             var prm1 = p1 || filterParam,
                                 prm2 = p1 && filterParam;
-                            //Eger service tanýlanmiþsa ve verilen fn tanýmlý ise
+                            //Eger service tanï¿½lanmiï¿½sa ve verilen fn tanï¿½mlï¿½ ise
                             if (service && service[fn]) {
                                 prom = service[fn].call(service, prm1, prm2);
                             } else {
-                                //Eger service tanýmlanmamiþsa mevcut controller uzerinde methodu çaliþitiriyoruz
+                                //Eger service tanï¿½mlanmamiï¿½sa mevcut controller uzerinde methodu ï¿½aliï¿½itiriyoruz
                                 var selfn = $parse(fn)(scope);
                                 if (selfn) {
                                     prom = angular.isFunction(selfn) ? selfn(prm1, prm2) : selfn;
@@ -82,7 +82,7 @@ define(['angular', 'underscore'], function (angular, _) {
                             common.makePromise(prom).then(function (data) {
                                 d.resolve(data);
                             }, function (err) {
-                                d.reject({ code: "error", msg: "rtSelect --> Error occured when getting items " + err.exception });
+                                d.reject({ code: "error", msg: "rtSelect --> Error occurred when getting items " + err.exception });
                             });
                         });
                         //Sonuc promise
@@ -100,7 +100,7 @@ define(['angular', 'underscore'], function (angular, _) {
                         }
                         return result;
                     };
-                    //Eger value prop tanýmlþanmiþsa valueyu yoksa tum objeyi
+                    //Eger value prop tanï¿½mlï¿½anmiï¿½sa valueyu yoksa tum objeyi
                     var getValueMapper = function (itemObject) {
                         return valuePropGetter ? valuePropGetter(itemObject) : itemObject;
                     };
@@ -145,7 +145,7 @@ define(['angular', 'underscore'], function (angular, _) {
                     //Init All Items
                     var initAllItems = function () {
                         var d = $q.defer();
-                        //Params deðiþikliklerini izle,tekrar bind et autosuggest olmayanlarda
+                        //Params deï¿½iï¿½ikliklerini izle,tekrar bind et autosuggest olmayanlarda
                         if (angular.isDefined(attrs.params)) {
                             scope.$watch(attrs.params, function (newParams, oldParams) {
                                 //if (newParams && !_.isEqual(newParams, oldParams)) {

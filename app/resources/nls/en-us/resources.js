@@ -41,7 +41,7 @@
         offline: 'Network connection failed !',
         hata: 'Error',
         yenidenbaslat: 'Restart !',
-        hataolustu: 'An error occured !',
+        hataolustu: 'An error occurred !',
         hataozur: 'Apologize for inconvenience situation.We have been informed about the exception.We will fix it soon.',
         hataaciklama: 'Error description :',
         mailfromzorunlu: 'From field is missing',
